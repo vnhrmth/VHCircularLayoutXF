@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="VHCircularLayoutXF.MyPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:VHCircularLayoutXF">
+    <ContentPage.Content>
+        <ScrollView>
+            <local:MyLayout
+                x:Name="myLayout"
+                Padding="150,250"
+                Angle="1"
+                Radius="100"
+                Rotation="1.5">
+                <Button
+                    BackgroundColor="Orange"
+                    Clicked="Button_Clicked"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    Text="Y"
+                    WidthRequest="40" />
+                <Button
+                    BackgroundColor="Orange"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    Text="Y"
+                    WidthRequest="40" />
+                <Button
+                    BackgroundColor="Orange"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    Text="Y"
+                    WidthRequest="40" />
+                <Button
+                    BackgroundColor="Orange"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    Text="Y"
+                    WidthRequest="40" />
+                <Button
+                    BackgroundColor="Orange"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    Text="Y"
+                    WidthRequest="40" />
+                <Button
+                    BackgroundColor="Orange"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    Text="Y"
+                    WidthRequest="40" />
+                <Button
+                    BackgroundColor="Orange"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    Text="Y"
+                    WidthRequest="40" />
+                <Button
+                    BackgroundColor="Orange"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    Text="Y"
+                    WidthRequest="40" />
+                <Button
+                    BackgroundColor="Orange"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    Text="Y"
+                    WidthRequest="40" />
+                <Button
+                    BackgroundColor="Orange"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    Text="Y"
+                    WidthRequest="40" />
+
+            </local:MyLayout>
+        </ScrollView>
+        <!--<local:VerticalStack Padding="50,0" VerticalOptions="Center">
+            <Button BackgroundColor="Red" Text="Default" />
+            <Button
+                BackgroundColor="Black"
+                HorizontalOptions="Start"
+                Text="Start" />
+            <Button
+                BackgroundColor="Black"
+                HorizontalOptions="Center"
+                Text="Center" />
+            <Button
+                BackgroundColor="Black"
+                HorizontalOptions="End"
+                Text="End" />
+            <Button
+                BackgroundColor="Black"
+                HorizontalOptions="Fill"
+                Text="Fill" />
+        </local:VerticalStack>-->
+    </ContentPage.Content>
+</ContentPage>
