@@ -1,10 +1,44 @@
 ﻿using System;
+using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace VHCircularLayoutXF
 {
+    [DesignTimeVisible(true)]
     public class MyLayout : Layout<View>
     {
+        public object SelectedItem
+        {
+            get { return GetValue(SelectedItemProperty); }
+            set { SetValue(SelectedItemProperty, value); }
+        }
+
+        public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create("SelectedItem", typeof(object), typeof(ListView), null, BindingMode.OneWayToSource,
+    propertyChanged: OnSelectedItemChanged);
+
+        public event EventHandler<SelectedItemChangedEventArgs> ItemSelected;
+
+        static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue) =>
+        ((MyLayout)bindable).ItemSelected?.Invoke(bindable,
+        new SelectedItemChangedEventArgs(newValue, ((MyLayout)bindable).Children.IndexOf((View)newValue)));
+
+        Rectangle _layoutAreaOverride;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Rectangle LayoutAreaOverride
+        {
+            get => _layoutAreaOverride;
+            set
+            {
+                if (_layoutAreaOverride == value)
+                    return;
+                _layoutAreaOverride = value;
+                // Dont invalidate here, we can relayout immediately since this only impacts our innards
+                UpdateChildrenLayout();
+            }
+        }
+
+
         public string Radius
         {
             get => (string)GetValue(RadiusProperty);
@@ -46,7 +80,7 @@ namespace VHCircularLayoutXF
 
         public event EventHandler<ScrollToRequestedEventArgs> ScrollToRequested;
 
-        public Rectangle LayoutAreaOverride { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public Rectangle LayoutAreaOverride { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
 
         protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
@@ -76,14 +110,13 @@ namespace VHCircularLayoutXF
             return new SizeRequest(reqSize, minSize);
         }
 
-
         protected override void LayoutChildren(double x, double y, double width, double height)
         {
-            double initialAngle = 0;
-            double radius = 10;
-            double requestedAngle = 0;
+            double initialAngle = -90;
+            double requestedAngle;
             double.TryParse(Angle, out requestedAngle);
-
+            double radius;
+            
             double.TryParse(Radius, out radius);
 
             foreach (View child in Children)
@@ -98,34 +131,19 @@ namespace VHCircularLayoutXF
                 double yChild = y;
                 double childWidth = childSizeRequest.Request.Width;
                 double childHeight = childSizeRequest.Request.Height;
-                // Adjust position and size based on HorizontalOptions.
-                //switch (child.HorizontalOptions.Alignment)
-                //{
-                //    case LayoutAlignment.Start:
-                //        break;
-                //    case LayoutAlignment.Center:
-                //        xChild += (width - childWidth) / 2;
-                //        break;
-                //    case LayoutAlignment.End:
-                //        xChild += (width - childWidth);
-                //        break;
-                //    case LayoutAlignment.Fill:
-                //        childWidth = width;
-                //        break;
-                //}
+                
                 double newXPoint = (radius * Math.Cos(initialAngle * Math.PI / 180)) + x;
                 double newYPoint = (radius * Math.Sin(initialAngle * Math.PI / 180)) + y;
 
+                child.AnchorX = 0.5;
+                child.AnchorY = 0.5;
+                child.RotateTo(initialAngle+90);
                 initialAngle += requestedAngle;
-                // Layout the child.
-                //child.Layout(new Rectangle(xChild, yChild, childWidth, childHeight));
+                
+
+
                 LayoutChildIntoBoundingRegion(child, new Rectangle(newXPoint, newYPoint, childWidth, childHeight));
-                // Get the next child’s vertical position.
-                //x += 
-                //y += childHeight;
             }
         }
-
-       
     }
 }

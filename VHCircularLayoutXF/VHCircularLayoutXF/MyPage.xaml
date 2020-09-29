@@ -5,14 +5,95 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:VHCircularLayoutXF">
     <ContentPage.Content>
-        <ScrollView>
+
+        <StackLayout Padding="40,40">
+            <local:MyLayout
+                Padding="120,150"
+                Angle="33"
+                BackgroundColor="Beige"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                ItemSelected="myLayout_ItemSelected"
+                Radius="100"
+                VerticalOptions="Start"
+                WidthRequest="50">
+                <BindableLayout.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>N</x:String>
+                        <x:String>S</x:String>
+                        <x:String>R</x:String>
+                        <x:String>A</x:String>
+                        <x:String>M</x:String>
+                        <x:String>A</x:String>
+                        <x:String>X</x:String>
+                        <x:String>A</x:String>
+                        <x:String>A</x:String>
+                        <x:String>A</x:String>
+                        <x:String>A</x:String>
+                    </x:Array>
+                </BindableLayout.ItemsSource>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Button
+                            BackgroundColor="Orange"
+                            Clicked="Button_Clicked_1"
+                            CommandParameter="{Binding .}"
+                            CornerRadius="20"
+                            HeightRequest="40"
+                            Text="{Binding .}"
+                            WidthRequest="40" />
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </local:MyLayout>
             <local:MyLayout
                 x:Name="myLayout"
-                Padding="150,250"
-                Angle="1"
+                Padding="120,150"
+                Angle="32.72"
+                BackgroundColor="Beige"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                ItemSelected="myLayout_ItemSelected"
                 Radius="100"
-                Rotation="1.5">
-                <Button
+                Scale="1.2"
+                VerticalOptions="Start"
+                WidthRequest="50">
+
+                <BindableLayout.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>N</x:String>
+                        <x:String>S</x:String>
+                        <x:String>R</x:String>
+                        <x:String>A</x:String>
+                        <x:String>M</x:String>
+                        <x:String>A</x:String>
+                        <x:String>X</x:String>
+                        <x:String>A</x:String>
+                        <x:String>A</x:String>
+                        <x:String>A</x:String>
+                        <x:String>A</x:String>
+                    </x:Array>
+                </BindableLayout.ItemsSource>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Padding="1,1,1,1"
+                            BorderColor="Azure"
+                            CornerRadius="20"
+                            HasShadow="True"
+                            HeightRequest="40"
+                            WidthRequest="40">
+                            <Button
+                                BackgroundColor="Orange"
+                                Clicked="Button_Clicked_1"
+                                CommandParameter="{Binding .}"
+                                CornerRadius="20"
+                                HeightRequest="40"
+                                Text="{Binding .}"
+                                WidthRequest="40" />
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+                <!--<Button
                     BackgroundColor="Orange"
                     Clicked="Button_Clicked"
                     CornerRadius="20"
@@ -20,6 +101,7 @@
                     Text="Y"
                     WidthRequest="40" />
                 <Button
+
                     BackgroundColor="Orange"
                     CornerRadius="20"
                     HeightRequest="40"
@@ -66,16 +148,10 @@
                     CornerRadius="20"
                     HeightRequest="40"
                     Text="Y"
-                    WidthRequest="40" />
-                <Button
-                    BackgroundColor="Orange"
-                    CornerRadius="20"
-                    HeightRequest="40"
-                    Text="Y"
-                    WidthRequest="40" />
+                    WidthRequest="40" />-->
 
             </local:MyLayout>
-        </ScrollView>
+        </StackLayout>
         <!--<local:VerticalStack Padding="50,0" VerticalOptions="Center">
             <Button BackgroundColor="Red" Text="Default" />
             <Button
