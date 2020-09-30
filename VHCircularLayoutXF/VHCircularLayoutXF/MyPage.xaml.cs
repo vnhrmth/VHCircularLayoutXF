@@ -77,10 +77,50 @@ namespace VHCircularLayoutXF
             Button button = (Button)sender;
             await button.ScaleTo(1.2);
             await button.ScaleTo(1);
+
+            Frame frame = new Frame()
+            {
+                CornerRadius = 20,
+                BackgroundColor = Color.Orange,
+                WidthRequest = 40,
+                HeightRequest = 40,
+                Padding = new Thickness(1, 1, 1, 1)
+            };
+
+            frame.Content = new Label()
+            {
+                Text = "asdasd",
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center
+            };
+
+            myLayout.Children.Add(frame);
         }
 
         void myLayout_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
+        }
+
+        void Button_Clicked_2(System.Object sender, System.EventArgs e)
+        {
+            Animation collapseAnimation = new Animation((x) =>
+            {
+                testLayout.Angle = x.ToString();
+            }, 30, 0, Easing.BounceOut, null);
+
+            Animation angleAnimation = new Animation((x)=>
+            {
+                testLayout.Angle = x.ToString();
+            },0,30,Easing.BounceOut,()=>
+            {
+                //collapseAnimation.Commit(this, "collapseAnimation");
+            });
+          
+            new Animation
+                   {
+                       { 0, 1, angleAnimation},
+                   }.Commit(this, "Animation4", 16, 2000, Easing.Linear, null, () => false);
+
         }
     }
 }

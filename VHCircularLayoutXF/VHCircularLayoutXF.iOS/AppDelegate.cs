@@ -22,6 +22,10 @@ namespace VHCircularLayoutXF.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+
+            Xamarin.Forms.Forms.SetFlags("Brushes_Experimental");
+            Xamarin.Forms.Forms.SetFlags("Shapes_Experimental");
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace VHCircularLayoutXF
 {
     [DesignTimeVisible(true)]
-    public class MyLayout : Layout<View>
+    public class VHCircularLayout : Layout<View>
     {
         public object SelectedItem
         {
@@ -14,13 +15,13 @@ namespace VHCircularLayoutXF
         }
 
         public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create("SelectedItem", typeof(object), typeof(ListView), null, BindingMode.OneWayToSource,
-    propertyChanged: OnSelectedItemChanged);
+          propertyChanged: OnSelectedItemChanged);
 
         public event EventHandler<SelectedItemChangedEventArgs> ItemSelected;
 
         static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue) =>
-        ((MyLayout)bindable).ItemSelected?.Invoke(bindable,
-        new SelectedItemChangedEventArgs(newValue, ((MyLayout)bindable).Children.IndexOf((View)newValue)));
+        ((VHCircularLayout)bindable).ItemSelected?.Invoke(bindable,
+        new SelectedItemChangedEventArgs(newValue, ((VHCircularLayout)bindable).Children.IndexOf((View)newValue)));
 
         Rectangle _layoutAreaOverride;
 
@@ -38,6 +39,11 @@ namespace VHCircularLayoutXF
             }
         }
 
+        public bool RotateChild
+        {
+            get => (bool)GetValue(RotateChildProperty);
+            set => SetValue(RotateChildProperty, value);
+        }
 
         public string Radius
         {
@@ -51,37 +57,26 @@ namespace VHCircularLayoutXF
             set => SetValue(AngleProperty, value);
         }
 
-        public bool HideEmptyCells
+        public static BindableProperty RotateChildProperty = BindableProperty.Create("RotateChild",
+        typeof(bool),
+        typeof(VHCircularLayout), false, propertyChanged: (bindable, oldValue, newValue) =>
         {
-            get => (bool)GetValue(HideEmptyCellsProperty);
-            set => SetValue(HideEmptyCellsProperty, value);
-        }
+            ((VHCircularLayout)bindable).InvalidateLayout();
+        });
 
         public static BindableProperty RadiusProperty = BindableProperty.Create("Radius",
             typeof(string),
-            typeof(MyLayout), "10", propertyChanged: (bindable, oldValue, newValue) =>
+            typeof(VHCircularLayout), "100", propertyChanged: (bindable, oldValue, newValue) =>
              {
-                 ((MyLayout)bindable).InvalidateLayout();
+                 ((VHCircularLayout)bindable).InvalidateLayout();
              });
 
         public static readonly BindableProperty AngleProperty = BindableProperty.Create("Angle",
             typeof(string),
-            typeof(MyLayout), "30", propertyChanged: (bindable, oldValue, newValue) =>
+            typeof(VHCircularLayout), "30", propertyChanged: (bindable, oldValue, newValue) =>
             {
-                ((MyLayout)bindable).InvalidateLayout();
+                ((VHCircularLayout)bindable).InvalidateLayout();
             });
-
-        public static readonly BindableProperty HideEmptyCellsProperty = BindableProperty.Create("HideEmptyCells",
-            typeof(bool),
-            typeof(MyLayout), false, propertyChanged: (bindable, oldValue, newValue) =>
-            {
-                ((MyLayout)bindable).InvalidateLayout();
-            });
-
-        public event EventHandler<ScrollToRequestedEventArgs> ScrollToRequested;
-
-        //public Rectangle LayoutAreaOverride { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
 
         protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
         {
@@ -97,7 +92,7 @@ namespace VHCircularLayoutXF
 
                 // Get the child's requested size.
                 SizeRequest childSizeRequest = child.Measure(widthConstraint,
-                Double.PositiveInfinity);
+                double.PositiveInfinity);
 
                 // Find the maximum width and accumulate the height.
                 reqSize.Width = Math.Max(reqSize.Width, childSizeRequest.Request.Width);
@@ -112,7 +107,7 @@ namespace VHCircularLayoutXF
 
         protected override void LayoutChildren(double x, double y, double width, double height)
         {
-            double initialAngle = -90;
+            double initialAngle = -180;
             double requestedAngle;
             double.TryParse(Angle, out requestedAngle);
             double radius;
@@ -121,29 +116,46 @@ namespace VHCircularLayoutXF
 
             foreach (View child in Children)
             {
+
                 // Skip the invisible children.
                 if (!child.IsVisible)
                     continue;
                 // Get the child's requested size.
                 SizeRequest childSizeRequest = child.Measure(width, Double.PositiveInfinity);
+
                 // Initialize child position and size.
                 double xChild = x;
                 double yChild = y;
                 double childWidth = childSizeRequest.Request.Width;
                 double childHeight = childSizeRequest.Request.Height;
-                
+
                 double newXPoint = (radius * Math.Cos(initialAngle * Math.PI / 180)) + x;
                 double newYPoint = (radius * Math.Sin(initialAngle * Math.PI / 180)) + y;
 
-                child.AnchorX = 0.5;
-                child.AnchorY = 0.5;
-                child.RotateTo(initialAngle+90);
-                initialAngle += requestedAngle;
-                
+                if (RotateChild)
+                {
+                    child.AnchorX = 0.5;
+                    child.AnchorY = 0.5;
+                    child.RotateTo(initialAngle + 90);
+                }
+                else
+                {
+                    child.AnchorX = 0.5;
+                    child.AnchorY = 0.5;
+                    child.RotateTo(0);
+                }
 
+                initialAngle += requestedAngle;
+                child.Opacity = 1;
 
                 LayoutChildIntoBoundingRegion(child, new Rectangle(newXPoint, newYPoint, childWidth, childHeight));
             }
+        }
+
+        protected override void InvalidateLayout()
+        {
+            base.InvalidateLayout();
+            Console.WriteLine("called invalidte");
         }
     }
 }

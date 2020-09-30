@@ -5,19 +5,122 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:VHCircularLayoutXF">
     <ContentPage.Content>
-
         <StackLayout Padding="40,40">
-            <local:MyLayout
+            <Switch x:Name="switch" />
+            <Button Clicked="Button_Clicked_2" Text="Click me" />
+            <Slider
+                x:Name="slider"
+                Maximum="30"
+                Minimum="0" />
+            <local:VHCircularLayout
+                x:Name="testLayout"
                 Padding="120,150"
-                Angle="33"
                 BackgroundColor="Beige"
+                BindingContext="{x:Reference switch}"
                 HeightRequest="100"
                 HorizontalOptions="Center"
                 ItemSelected="myLayout_ItemSelected"
-                Radius="100"
+                RotateChild="{Binding IsToggled}"
                 VerticalOptions="Start"
                 WidthRequest="50">
-                <BindableLayout.ItemsSource>
+                <Frame
+                    Background="{x:Static Brush.Indigo}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="X"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Background="{x:Static Brush.Indigo}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="X"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Background="{x:Static Brush.CadetBlue}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="A"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Background="{x:Static Brush.AliceBlue}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="M"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Background="{x:Static Brush.BlanchedAlmond}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="A"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Background="{x:Static Brush.BlanchedAlmond}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="R"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Background="{x:Static Brush.AliceBlue}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="I"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Background="{x:Static Brush.BlanchedAlmond}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="N"
+                        VerticalOptions="Center" />
+                </Frame>
+                <!--<BindableLayout.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>N</x:String>
                         <x:String>S</x:String>
@@ -34,6 +137,39 @@
                 </BindableLayout.ItemsSource>
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
+                        <Frame
+                            Background="{x:Static Brush.Indigo}"
+                            BorderColor="LightGray"
+                            CornerRadius="40"
+                            HasShadow="True"
+                            HeightRequest="40"
+                            WidthRequest="40" />
+                        <Path
+                            Fill="Orange"
+                            Stroke="Green"
+                            StrokeThickness="2">
+                            <Path.Data>
+                                <GeometryGroup>
+                                    <EllipseGeometry
+                                        Center="10,15"
+                                        RadiusX="20"
+                                        RadiusY="20" />
+                                    <EllipseGeometry
+                                        Center="15,15"
+                                        RadiusX="20"
+                                        RadiusY="20" />
+                                    <EllipseGeometry
+                                        Center="10,10"
+                                        RadiusX="20"
+                                        RadiusY="20" />
+                                    <EllipseGeometry
+                                        Center="10,0"
+                                        RadiusX="20"
+                                        RadiusY="20" />
+                                </GeometryGroup>
+                            </Path.Data>
+                        </Path>
+
                         <Button
                             BackgroundColor="Orange"
                             Clicked="Button_Clicked_1"
@@ -43,17 +179,19 @@
                             Text="{Binding .}"
                             WidthRequest="40" />
                     </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </local:MyLayout>
-            <local:MyLayout
+                </BindableLayout.ItemTemplate>-->
+            </local:VHCircularLayout>
+            <local:VHCircularLayout
                 x:Name="myLayout"
                 Padding="120,150"
                 Angle="32.72"
                 BackgroundColor="Beige"
+                BindingContext="{x:Reference switch}"
                 HeightRequest="100"
                 HorizontalOptions="Center"
                 ItemSelected="myLayout_ItemSelected"
                 Radius="100"
+                RotateChild="{Binding IsToggled}"
                 Scale="1.2"
                 VerticalOptions="Start"
                 WidthRequest="50">
@@ -63,14 +201,7 @@
                         <x:String>N</x:String>
                         <x:String>S</x:String>
                         <x:String>R</x:String>
-                        <x:String>A</x:String>
-                        <x:String>M</x:String>
-                        <x:String>A</x:String>
-                        <x:String>X</x:String>
-                        <x:String>A</x:String>
-                        <x:String>A</x:String>
-                        <x:String>A</x:String>
-                        <x:String>A</x:String>
+
                     </x:Array>
                 </BindableLayout.ItemsSource>
                 <BindableLayout.ItemTemplate>
@@ -150,7 +281,7 @@
                     Text="Y"
                     WidthRequest="40" />-->
 
-            </local:MyLayout>
+            </local:VHCircularLayout>
         </StackLayout>
         <!--<local:VerticalStack Padding="50,0" VerticalOptions="Center">
             <Button BackgroundColor="Red" Text="Default" />

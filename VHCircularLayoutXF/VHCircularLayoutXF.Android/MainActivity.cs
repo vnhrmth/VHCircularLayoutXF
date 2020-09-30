@@ -17,6 +17,9 @@ namespace VHCircularLayoutXF.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            Xamarin.Forms.Forms.SetFlags("Brushes_Experimental");
+            Xamarin.Forms.Forms.SetFlags("Shapes_Experimental");
+
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

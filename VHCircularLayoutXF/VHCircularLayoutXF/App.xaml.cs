@@ -9,6 +9,7 @@ namespace VHCircularLayoutXF
         public App()
         {
             InitializeComponent();
+            Device.SetFlags(new string[] { "Brush_Experimental" });
 
             MainPage = new MyPage();
         }
