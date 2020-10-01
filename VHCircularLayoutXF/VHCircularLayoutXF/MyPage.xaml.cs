@@ -103,23 +103,23 @@ namespace VHCircularLayoutXF
 
         void Button_Clicked_2(System.Object sender, System.EventArgs e)
         {
-            //Animation collapseAnimation = new Animation((x) =>
-            //{
-            //    testLayout.Angle = x.ToString();
-            //}, 30, 0, Easing.BounceOut, null);
+            Animation collapseAnimation = new Animation((x) =>
+            {
+                testLayout.Angle = x;
+            }, 30, 0, Easing.BounceOut, null);
 
-            //Animation angleAnimation = new Animation((x)=>
-            //{
-            //    testLayout.Angle = x.ToString();
-            //},0,30,Easing.BounceOut,()=>
-            //{
-            //    //collapseAnimation.Commit(this, "collapseAnimation");
-            //});
-          
-            //new Animation
-            //       {
-            //           { 0, 1, angleAnimation},
-            //       }.Commit(this, "Animation4", 16, 2000, Easing.Linear, null, () => false);
+            Animation angleAnimation = new Animation((x) =>
+            {
+                testLayout.Angle = x;
+            }, 0, 30, Easing.BounceOut, () =>
+                {
+                //collapseAnimation.Commit(this, "collapseAnimation");
+            });
+
+            new Animation
+                   {
+                       { 0, 1, angleAnimation},
+                   }.Commit(this, "Animation4", 16, 2000, Easing.Linear, null, () => false);
 
         }
     }

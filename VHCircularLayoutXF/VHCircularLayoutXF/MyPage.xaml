@@ -8,6 +8,108 @@
         <StackLayout Padding="40,40">
             <Switch x:Name="switch" />
             <Button Clicked="Button_Clicked_2" Text="Click me" />
+            <Slider
+                x:Name="slider"
+                Maximum="150"
+                Minimum="0"
+                Value="0" />
+            <local:CircularLayout
+                x:Name="testLayout"
+                Padding="120,150"
+                BackgroundColor="Beige"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                ShouldRotateChild="False"
+                ShouldStackFirstToLast="True"
+                VerticalOptions="Start"
+                WidthRequest="50">
+
+                <Frame
+                    Background="{x:Static Brush.Indigo}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="X"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Background="{x:Static Brush.CadetBlue}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="A"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Background="{x:Static Brush.AliceBlue}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="M"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Background="{x:Static Brush.BlanchedAlmond}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="A"
+                        VerticalOptions="Center" />
+                </Frame>
+
+                <Frame
+                    Background="{x:Static Brush.BlanchedAlmond}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="R"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Background="{x:Static Brush.AliceBlue}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="I"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Background="{x:Static Brush.BlanchedAlmond}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="N"
+                        VerticalOptions="Center" />
+                </Frame>
+            </local:CircularLayout>
 
         </StackLayout>
         <!--<local:VerticalStack Padding="50,0" VerticalOptions="Center">
