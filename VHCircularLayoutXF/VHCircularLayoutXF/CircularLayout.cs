@@ -6,7 +6,7 @@ using Xamarin.Forms;
 namespace VHCircularLayoutXF
 {
     [DesignTimeVisible(true)]
-    public class VHCircularLayout : Layout<View>
+    public class CircularLayout : Layout<View>
     {
         public object SelectedItem
         {
@@ -20,8 +20,8 @@ namespace VHCircularLayoutXF
         public event EventHandler<SelectedItemChangedEventArgs> ItemSelected;
 
         static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue) =>
-        ((VHCircularLayout)bindable).ItemSelected?.Invoke(bindable,
-        new SelectedItemChangedEventArgs(newValue, ((VHCircularLayout)bindable).Children.IndexOf((View)newValue)));
+        ((CircularLayout)bindable).ItemSelected?.Invoke(bindable,
+        new SelectedItemChangedEventArgs(newValue, ((CircularLayout)bindable).Children.IndexOf((View)newValue)));
 
         Rectangle _layoutAreaOverride;
 
@@ -39,10 +39,10 @@ namespace VHCircularLayoutXF
             }
         }
 
-        public bool RotateChild
+        public bool ShouldRotateChild
         {
-            get => (bool)GetValue(RotateChildProperty);
-            set => SetValue(RotateChildProperty, value);
+            get => (bool)GetValue(ShouldRotateChildProperty);
+            set => SetValue(ShouldRotateChildProperty, value);
         }
 
         public string Radius
@@ -57,25 +57,25 @@ namespace VHCircularLayoutXF
             set => SetValue(AngleProperty, value);
         }
 
-        public static BindableProperty RotateChildProperty = BindableProperty.Create("RotateChild",
+        public static BindableProperty ShouldRotateChildProperty = BindableProperty.Create("ShouldRotateChild",
         typeof(bool),
-        typeof(VHCircularLayout), false, propertyChanged: (bindable, oldValue, newValue) =>
+        typeof(CircularLayout), false, propertyChanged: (bindable, oldValue, newValue) =>
         {
-            ((VHCircularLayout)bindable).InvalidateLayout();
+            ((CircularLayout)bindable).InvalidateLayout();
         });
 
         public static BindableProperty RadiusProperty = BindableProperty.Create("Radius",
             typeof(string),
-            typeof(VHCircularLayout), "100", propertyChanged: (bindable, oldValue, newValue) =>
+            typeof(CircularLayout), "100", propertyChanged: (bindable, oldValue, newValue) =>
              {
-                 ((VHCircularLayout)bindable).InvalidateLayout();
+                 ((CircularLayout)bindable).InvalidateLayout();
              });
 
         public static readonly BindableProperty AngleProperty = BindableProperty.Create("Angle",
             typeof(string),
-            typeof(VHCircularLayout), "30", propertyChanged: (bindable, oldValue, newValue) =>
+            typeof(CircularLayout), "30", propertyChanged: (bindable, oldValue, newValue) =>
             {
-                ((VHCircularLayout)bindable).InvalidateLayout();
+                ((CircularLayout)bindable).InvalidateLayout();
             });
 
         protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
@@ -114,12 +114,63 @@ namespace VHCircularLayoutXF
             
             double.TryParse(Radius, out radius);
 
+            //change overlapping direction and last is shown first
+            //for(int i = Children.Count - 1; i > 0; i--)
+            //{
+            //    View child = Children[i];
+            //    // Skip the invisible children.
+            //    if (!child.IsVisible)
+            //        continue;
+            //    // Get the child's requested size.
+            //    SizeRequest childSizeRequest = child.Measure(width, Double.PositiveInfinity);
+
+            //    // Initialize child position and size.
+            //    double xChild = x;
+            //    double yChild = y;
+            //    double childWidth = childSizeRequest.Request.Width;
+            //    double childHeight = childSizeRequest.Request.Height;
+
+            //    double newXPoint = (radius * Math.Cos(initialAngle * Math.PI / 180)) + x;
+            //    double newYPoint = (radius * Math.Sin(initialAngle * Math.PI / 180)) + y;
+
+            //    if (RotateChild)
+            //    {
+            //        child.AnchorX = 0.5;
+            //        child.AnchorY = 0.5;
+            //        child.RotateTo(initialAngle + 90);
+            //    }
+            //    else
+            //    {
+            //        child.AnchorX = 0.5;
+            //        child.AnchorY = 0.5;
+            //        child.RotateTo(0);
+            //    }
+
+            //    initialAngle += requestedAngle;
+            //    child.Opacity = 1;
+
+            //    LayoutChildIntoBoundingRegion(child, new Rectangle(newXPoint, newYPoint, childWidth, childHeight));
+            //}
+
+            //FILO
+            int i = 0;
             foreach (View child in Children)
             {
+                // interleaving
+                //if (i % 2 == 0)
+                //{
+                //    child.IsVisible = false;
+                //}
+                //else
+                //{
+                //    child.IsVisible = true;
+                //}
+                //i++;
 
                 // Skip the invisible children.
                 if (!child.IsVisible)
                     continue;
+
                 // Get the child's requested size.
                 SizeRequest childSizeRequest = child.Measure(width, Double.PositiveInfinity);
 
@@ -129,26 +180,33 @@ namespace VHCircularLayoutXF
                 double childWidth = childSizeRequest.Request.Width;
                 double childHeight = childSizeRequest.Request.Height;
 
+
                 double newXPoint = (radius * Math.Cos(initialAngle * Math.PI / 180)) + x;
                 double newYPoint = (radius * Math.Sin(initialAngle * Math.PI / 180)) + y;
 
-                if (RotateChild)
-                {
-                    child.AnchorX = 0.5;
-                    child.AnchorY = 0.5;
-                    child.RotateTo(initialAngle + 90);
-                }
-                else
-                {
-                    child.AnchorX = 0.5;
-                    child.AnchorY = 0.5;
-                    child.RotateTo(0);
-                }
+                // if set rotates the child as per the angle set
+                RotateChild(initialAngle, child);
 
                 initialAngle += requestedAngle;
                 child.Opacity = 1;
 
                 LayoutChildIntoBoundingRegion(child, new Rectangle(newXPoint, newYPoint, childWidth, childHeight));
+            }
+        }
+
+        private void RotateChild(double initialAngle, View child)
+        {
+            if (ShouldRotateChild)
+            {
+                child.AnchorX = 0.5;
+                child.AnchorY = 0.5;
+                child.RotateTo(initialAngle + 90);
+            }
+            else
+            {
+                child.AnchorX = 0.5;
+                child.AnchorY = 0.5;
+                child.RotateTo(0);
             }
         }
 

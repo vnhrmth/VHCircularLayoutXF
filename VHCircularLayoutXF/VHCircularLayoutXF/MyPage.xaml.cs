@@ -19,56 +19,56 @@ namespace VHCircularLayoutXF
         {
            
             //await myLayout.RotateTo(0, 1000, Easing.Linear);
-            await myLayout.RotateTo(360, 1000, Easing.Linear);
-            myLayout.Rotation = 0;
+            //await myLayout.RotateTo(360, 1000, Easing.Linear);
+            //myLayout.Rotation = 0;
         }
 
         void Slider_ValueChanged(System.Object sender, Xamarin.Forms.ValueChangedEventArgs e)
         {
             Slider slider = (Slider)sender;
-            myLayout.AnchorX = slider.Value;
+            //myLayout.AnchorX = slider.Value;
         }
 
         void Slider_ValueChanged2(System.Object sender, Xamarin.Forms.ValueChangedEventArgs e)
         {
             Slider slider = (Slider)sender;
-            myLayout.AnchorY = slider.Value;
+            //myLayout.AnchorY = slider.Value;
         }
 
         void PanGestureRecognizer_PanUpdated(System.Object sender, Xamarin.Forms.PanUpdatedEventArgs e)
         {
-            myLayout.AnchorX = 0.5;
-            myLayout.AnchorY = 0.3;
+            //myLayout.AnchorX = 0.5;
+            //myLayout.AnchorY = 0.3;
 
-            switch (e.StatusType)
-            {
-                case GestureStatus.Started:
+            //switch (e.StatusType)
+            //{
+            //    case GestureStatus.Started:
 
-                    break;
-                case GestureStatus.Running:
-                    // Translate and ensure we don't pan beyond the wrapped user interface element bounds.
-                    x = e.TotalX + myLayout.TranslationX;
-                    y = e.TotalY + myLayout.TranslationY; 
+            //        break;
+            //    case GestureStatus.Running:
+            //        // Translate and ensure we don't pan beyond the wrapped user interface element bounds.
+            //        x = e.TotalX + myLayout.TranslationX;
+            //        y = e.TotalY + myLayout.TranslationY; 
                     
 
                     
-                    var rad = Math.Atan2(y, x); // In radians
-                    var deg = rad * (180 / Math.PI);
-                    myLayout.RotateTo(deg);
-                    myLayout.Rotation = deg;
-                    Console.WriteLine("running" + myLayout.Rotation);
-                    //myLayout.RotateYTo(y, 1000, Easing.Linear);
-                    break;
+            //        var rad = Math.Atan2(y, x); // In radians
+            //        var deg = rad * (180 / Math.PI);
+            //        myLayout.RotateTo(deg);
+            //        myLayout.Rotation = deg;
+            //        Console.WriteLine("running" + myLayout.Rotation);
+            //        //myLayout.RotateYTo(y, 1000, Easing.Linear);
+            //        break;
 
-                case GestureStatus.Completed:
-                    Console.WriteLine("Completed"+myLayout.Rotation);
-                    // Store the translation applied during the pan
-                    //x = 0;
-                    //y = 0;
-                    //myLayout.RotateTo(0);
-                    //myLayout.Rotation = 0;
-                    break;
-            }
+            //    case GestureStatus.Completed:
+            //        Console.WriteLine("Completed"+myLayout.Rotation);
+            //        // Store the translation applied during the pan
+            //        //x = 0;
+            //        //y = 0;
+            //        //myLayout.RotateTo(0);
+            //        //myLayout.Rotation = 0;
+            //        break;
+            //}
 
         }
 
@@ -94,7 +94,7 @@ namespace VHCircularLayoutXF
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            myLayout.Children.Add(frame);
+            //myLayout.Children.Add(frame);
         }
 
         void myLayout_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
@@ -103,23 +103,23 @@ namespace VHCircularLayoutXF
 
         void Button_Clicked_2(System.Object sender, System.EventArgs e)
         {
-            Animation collapseAnimation = new Animation((x) =>
-            {
-                testLayout.Angle = x.ToString();
-            }, 30, 0, Easing.BounceOut, null);
+            //Animation collapseAnimation = new Animation((x) =>
+            //{
+            //    testLayout.Angle = x.ToString();
+            //}, 30, 0, Easing.BounceOut, null);
 
-            Animation angleAnimation = new Animation((x)=>
-            {
-                testLayout.Angle = x.ToString();
-            },0,30,Easing.BounceOut,()=>
-            {
-                //collapseAnimation.Commit(this, "collapseAnimation");
-            });
+            //Animation angleAnimation = new Animation((x)=>
+            //{
+            //    testLayout.Angle = x.ToString();
+            //},0,30,Easing.BounceOut,()=>
+            //{
+            //    //collapseAnimation.Commit(this, "collapseAnimation");
+            //});
           
-            new Animation
-                   {
-                       { 0, 1, angleAnimation},
-                   }.Commit(this, "Animation4", 16, 2000, Easing.Linear, null, () => false);
+            //new Animation
+            //       {
+            //           { 0, 1, angleAnimation},
+            //       }.Commit(this, "Animation4", 16, 2000, Easing.Linear, null, () => false);
 
         }
     }
