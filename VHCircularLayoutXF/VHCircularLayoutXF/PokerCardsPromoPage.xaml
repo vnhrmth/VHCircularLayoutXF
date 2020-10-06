@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="VHCircularLayoutXF.PokerCardsPromoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:VHCircularLayoutXF">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Offset="0.1" Color="#757F9A" />
+                    <GradientStop Offset="0.9" Color="#D7DDE8" />
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Label
+                Padding="50"
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalOptions="CenterAndExpand"
+                Text="Poker cards"
+                TextColor="White" />
+            <Slider
+                x:Name="cardsslider"
+                Margin="50"
+                Maximum="45"
+                Minimum="0"
+                Value="45" />
+            <local:CircularLayout
+                x:Name="testLayout"
+                Padding="100,250"
+                Angle="{Binding Value}"
+                BindingContext="{x:Reference cardsslider}"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                InitialStartPositionAngle="270"
+                Radius="100"
+                ShouldRotateChild="True"
+                ShouldStackFirstToLast="True"
+                VerticalOptions="Start"
+                WidthRequest="50">
+                <BindableLayout.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>AceOfDiamonds</x:String>
+                        <x:String>AceOfSpades</x:String>
+                        <x:String>TenOfSpades</x:String>
+                        <x:String>TwoOfSpades</x:String>
+                        <x:String>AceOfDiamonds</x:String>
+                        <x:String>AceOfSpades</x:String>
+                        <x:String>TenOfSpades</x:String>
+                        <x:String>TwoOfSpades</x:String>
+                    </x:Array>
+                </BindableLayout.ItemsSource>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="100"
+                            HorizontalOptions="Center"
+                            Source="{Binding .}"
+                            VerticalOptions="Center"
+                            WidthRequest="100" />
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+
+
+            </local:CircularLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

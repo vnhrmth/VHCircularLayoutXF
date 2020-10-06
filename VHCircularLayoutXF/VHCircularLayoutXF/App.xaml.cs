@@ -9,9 +9,18 @@ namespace VHCircularLayoutXF
         public App()
         {
             InitializeComponent();
-            Device.SetFlags(new string[] { "Brush_Experimental" });
-
-            MainPage = new MyPage();
+            Device.SetFlags(new string[] { "Brush_Experimental" , "Shapes_Experimental" });
+            //MainPage = new MyPage();
+            //MainPage = new ViewCreatorPage();
+            //MainPage = new RadiusChangerPage();
+            //MainPage = new AngleChangerPage();
+            //MainPage = new NonGenericPromoPage();
+            //MainPage = new ChangeStackingPromoPage();
+            //MainPage = new AnchorPointPromoPage();
+            //MainPage = new InitialStartPositionAnglePromoPage();
+            //MainPage = new MoonPhasesPromoPage();
+            //MainPage = new PokerCardsPromoPage();
+            MainPage = new FlowerPromoPage();
         }
 
         protected override void OnStart()

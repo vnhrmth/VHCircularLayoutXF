@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="VHCircularLayoutXF.MoonPhasesPromoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:VHCircularLayoutXF">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Offset="0.1" Color="#232526" />
+                    <GradientStop Offset="0.9" Color="#414345" />
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Label
+                Padding="50"
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalOptions="CenterAndExpand"
+                Text="Moon Phases"
+                TextColor="White" />
+            <Slider
+                x:Name="moonslider"
+                Margin="50"
+                Maximum="45"
+                Minimum="0"
+                Value="45" />
+            <local:CircularLayout
+                x:Name="testLayout"
+                Padding="100,250"
+                Angle="{Binding Value}"
+                BindingContext="{x:Reference moonslider}"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                InitialStartPositionAngle="-180"
+                Radius="150"
+                ShouldRotateChild="False"
+                ShouldStackFirstToLast="True"
+                VerticalOptions="Start"
+                WidthRequest="50">
+                <!--<local:CircularLayout.GestureRecognizers>
+                    <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated" />
+                </local:CircularLayout.GestureRecognizers>-->
+
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    Source="NewMoon"
+                    VerticalOptions="Center"
+                    WidthRequest="30" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    Source="WanningCrescent"
+                    VerticalOptions="Center"
+                    WidthRequest="30" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    Source="Quarter"
+                    VerticalOptions="Center"
+                    WidthRequest="30" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    Source="WanningGibbous"
+                    VerticalOptions="Center"
+                    WidthRequest="30" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    Source="FullMoon"
+                    VerticalOptions="Center"
+                    WidthRequest="30" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    Source="WaxingGibbous"
+                    VerticalOptions="Center"
+                    WidthRequest="30" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    Source="Quarter"
+                    VerticalOptions="Center"
+                    WidthRequest="30" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    Source="WaxingCrescent"
+                    VerticalOptions="Center"
+                    WidthRequest="30" />
+            </local:CircularLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

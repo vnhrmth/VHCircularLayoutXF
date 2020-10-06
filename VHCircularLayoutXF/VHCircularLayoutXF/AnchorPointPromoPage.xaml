@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="VHCircularLayoutXF.AnchorPointPromoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:VHCircularLayoutXF.Converters"
+    xmlns:local="clr-namespace:VHCircularLayoutXF">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolToStringConverter x:Key="BoolToString" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Offset="0.1" Color="#16222A" />
+                    <GradientStop Offset="0.9" Color="#3A6073" />
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Label
+                Padding="50"
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalOptions="CenterAndExpand"
+                Text="Child Anchor Point"
+                TextColor="White" />
+
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="Title"
+                                Text="Monkeys "
+                                TextColor="White" />
+                            <Span
+                                BindingContext="{x:Reference AnchorPointSwitch}"
+                                FontAttributes="Bold"
+                                FontSize="Title"
+                                Text="{Binding Path=IsToggled, Converter={StaticResource BoolToString}}"
+                                TextColor="White" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Switch
+                x:Name="AnchorPointSwitch"
+                HorizontalOptions="Center"
+                IsToggled="True"
+                OnColor="BurlyWood"
+                ThumbColor="Black" />
+
+
+            <local:CircularLayout
+                x:Name="testLayout"
+                Padding="0,180"
+                Angle="36"
+                BindingContext="{x:Reference AnchorPointSwitch}"
+                HorizontalOptions="Center"
+                InitialStartPositionAngle="-180"
+                Radius="150"
+                ShouldRotateChild="{Binding IsToggled}"
+                ShouldStackFirstToLast="True"
+                VerticalOptions="Center">
+
+                <ImageButton
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    Source="monkey"
+                    VerticalOptions="Center"
+                    WidthRequest="80" />
+                <ImageButton
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    Source="monkey"
+                    VerticalOptions="Center"
+                    WidthRequest="80" />
+                <ImageButton
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    Source="monkey"
+                    VerticalOptions="Center"
+                    WidthRequest="80" />
+                <ImageButton
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    Source="monkey"
+                    VerticalOptions="Center"
+                    WidthRequest="80" />
+                <ImageButton
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    Source="monkey"
+                    VerticalOptions="Center"
+                    WidthRequest="80" />
+                <ImageButton
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    Source="monkey"
+                    VerticalOptions="Center"
+                    WidthRequest="80" />
+                <ImageButton
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    Source="monkey"
+                    VerticalOptions="Center"
+                    WidthRequest="80" />
+                <ImageButton
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    Source="monkey"
+                    VerticalOptions="Center"
+                    WidthRequest="80" />
+                <ImageButton
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    Source="monkey"
+                    VerticalOptions="Center"
+                    WidthRequest="80" />
+                <ImageButton
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    Source="monkey"
+                    VerticalOptions="Center"
+                    WidthRequest="80" />
+            </local:CircularLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

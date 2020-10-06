@@ -40,36 +40,36 @@ namespace VHCircularLayoutXF
             //myLayout.AnchorX = 0.5;
             //myLayout.AnchorY = 0.3;
 
-            //switch (e.StatusType)
-            //{
-            //    case GestureStatus.Started:
-
-            //        break;
-            //    case GestureStatus.Running:
-            //        // Translate and ensure we don't pan beyond the wrapped user interface element bounds.
-            //        x = e.TotalX + myLayout.TranslationX;
-            //        y = e.TotalY + myLayout.TranslationY; 
+            switch (e.StatusType)
+            {
+                case GestureStatus.Started:
+                    View view = (View)sender;
                     
+                    x = e.TotalX;
+                    y = e.TotalY;
+                    break;
+                case GestureStatus.Running:
+                    // Translate and ensure we don't pan beyond the wrapped user interface element bounds.
+                    x = e.TotalX;
+                    y = e.TotalY;
 
-                    
-            //        var rad = Math.Atan2(y, x); // In radians
-            //        var deg = rad * (180 / Math.PI);
-            //        myLayout.RotateTo(deg);
-            //        myLayout.Rotation = deg;
-            //        Console.WriteLine("running" + myLayout.Rotation);
-            //        //myLayout.RotateYTo(y, 1000, Easing.Linear);
-            //        break;
+                    var rad = Math.Atan2(y, x); // In radians
+                    var deg = rad * (180 / Math.PI);
 
-            //    case GestureStatus.Completed:
-            //        Console.WriteLine("Completed"+myLayout.Rotation);
-            //        // Store the translation applied during the pan
-            //        //x = 0;
-            //        //y = 0;
-            //        //myLayout.RotateTo(0);
-            //        //myLayout.Rotation = 0;
-            //        break;
-            //}
+                    testLayout.InitialStartPositionAngle = deg;
+                    //Console.WriteLine("running" + testLayout.Rotation);
+                    //myLayout.RotateYTo(y, 1000, Easing.Linear);
+                    break;
 
+                case GestureStatus.Completed:
+                    //Console.WriteLine("Completed" + myLayout.Rotation);
+                    // Store the translation applied during the pan
+                    //x = 0;
+                    //y = 0;
+                    //myLayout.RotateTo(0);
+                    //myLayout.Rotation = 0;
+                    break;
+            }
         }
 
         async void Button_Clicked_1(System.Object sender, System.EventArgs e)

@@ -63,6 +63,20 @@ namespace VHCircularLayoutXF
             set => SetValue(AngleProperty, value);
         }
 
+        public double InitialStartPositionAngle
+        {
+            get => (double)GetValue(InitialStartPositionAngleProperty);
+            set => SetValue(InitialStartPositionAngleProperty, value);
+        }
+
+        // initial position is -180 which starts at the left side i.e 2nd qudrant.
+        public static BindableProperty InitialStartPositionAngleProperty = BindableProperty.Create("InitialStartPositionAngle",
+            typeof(double),
+            typeof(CircularLayout), -180.0, propertyChanged: (bindable, oldValue, newValue) =>
+            {
+                ((CircularLayout)bindable).InvalidateLayout();
+            });
+
         public static BindableProperty ShouldStackFirstToLastProperty = BindableProperty.Create("ShouldStackFirstToLast",
         typeof(bool),
         typeof(CircularLayout), true, propertyChanged: (bindable, oldValue, newValue) =>
@@ -120,23 +134,23 @@ namespace VHCircularLayoutXF
 
         protected override void LayoutChildren(double x, double y, double width, double height)
         {
-            double initialAngle = -180;
+            double startPositionAngle = InitialStartPositionAngle;
 
             if(ShouldStackFirstToLast)
-                StackFirstToLast(x, y, width, initialAngle, Angle, Radius);
+                StackFirstToLast(x, y, width, startPositionAngle, Angle, Radius);
             else
-                StackLastToFirst(x, y, width, initialAngle, Angle, Radius);
+                StackLastToFirst(x, y, width, startPositionAngle, Angle, Radius);
         }
 
         private void StackFirstToLast(double x, double y,
                                       double width, double initialAngle,
-                                      double requestedAngle, double radius)
+                                      double sweepAngle, double radius)
         {
             //FILO
             //int i = 0; // use for interleaved
             foreach (View child in Children)
             {
-                // interleaving
+                // interleaving feature
                 //if (i % 2 == 0)
                 //{
                 //    child.IsVisible = false;
@@ -155,19 +169,16 @@ namespace VHCircularLayoutXF
                 SizeRequest childSizeRequest = child.Measure(width, Double.PositiveInfinity);
 
                 // Initialize child position and size.
-                double xChild = x;
-                double yChild = y;
                 double childWidth = childSizeRequest.Request.Width;
                 double childHeight = childSizeRequest.Request.Height;
 
-
                 double newXPoint = (radius * Math.Cos(initialAngle * Math.PI / 180)) + x;
                 double newYPoint = (radius * Math.Sin(initialAngle * Math.PI / 180)) + y;
-
-                // if set rotates the child as per the angle set
+                
+                // if Rotation for child is set the child is rotated as per the angle its parent is located
                 RotateChild(initialAngle, child);
 
-                initialAngle += requestedAngle;
+                initialAngle += sweepAngle;
                 child.Opacity = 1;
 
                 LayoutChildIntoBoundingRegion(child, new Rectangle(newXPoint, newYPoint, childWidth, childHeight));
@@ -177,7 +188,7 @@ namespace VHCircularLayoutXF
 
         private void StackLastToFirst(double x, double y,
                                       double width, double initialAngle,
-                                      double requestedAngle, double radius)
+                                      double sweepAngle, double radius)
         {
             //change overlapping direction and last is shown first
             for (int index = Children.Count - 1; index >= 0; index--)
@@ -190,27 +201,15 @@ namespace VHCircularLayoutXF
                 SizeRequest childSizeRequest = child.Measure(width, Double.PositiveInfinity);
 
                 // Initialize child position and size.
-                double yChild = y;
                 double childWidth = childSizeRequest.Request.Width;
                 double childHeight = childSizeRequest.Request.Height;
 
                 double newXPoint = (radius * Math.Cos(initialAngle * Math.PI / 180)) + x;
                 double newYPoint = (radius * Math.Sin(initialAngle * Math.PI / 180)) + y;
 
-                if (ShouldRotateChild)
-                {
-                    child.AnchorX = 0.5;
-                    child.AnchorY = 0.5;
-                    child.RotateTo(initialAngle + 90);
-                }
-                else
-                {
-                    child.AnchorX = 0.5;
-                    child.AnchorY = 0.5;
-                    child.RotateTo(0);
-                }
+                RotateChild(initialAngle, child);
 
-                initialAngle += requestedAngle;
+                initialAngle += sweepAngle;
                 child.Opacity = 1;
 
                 LayoutChildIntoBoundingRegion(child, new Rectangle(newXPoint, newYPoint, childWidth, childHeight));
@@ -219,16 +218,14 @@ namespace VHCircularLayoutXF
 
         private void RotateChild(double initialAngle, View child)
         {
+            child.AnchorX = 0.5;
+            child.AnchorY = 0.5;
             if (ShouldRotateChild)
             {
-                child.AnchorX = 0.5;
-                child.AnchorY = 0.5;
                 child.RotateTo(initialAngle + 90);
             }
             else
             {
-                child.AnchorX = 0.5;
-                child.AnchorY = 0.5;
                 child.RotateTo(0);
             }
         }

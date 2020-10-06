@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="VHCircularLayoutXF.NonGenericPromoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:VHCircularLayoutXF">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Offset="0.1" Color="#4568dc" />
+                    <GradientStop Offset="0.9" Color="#b06ab3" />
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Label
+                Padding="50"
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalOptions="CenterAndExpand"
+                Text="Non Generic Views" />
+
+            <Label
+                Padding="10,10"
+                FontFamily="Full Sans"
+                HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="Title"
+                                Text="Label," />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="Title"
+                                Text="Path," />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="Title"
+                                Text="Path," />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="Title"
+                                Text="Button," />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="Title"
+                                Text="Image" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+            <Slider
+                x:Name="AngleSlider"
+                Margin="100"
+                HorizontalOptions="Center"
+                Maximum="45"
+                Minimum="0"
+                Value="45" />
+            <local:CircularLayout
+                x:Name="testLayout"
+                Padding="160,160"
+                Angle="{Binding Value}"
+                BindingContext="{x:Reference AngleSlider}"
+                HorizontalOptions="Center"
+                InitialStartPositionAngle="-180"
+                Radius="160"
+                ShouldRotateChild="False"
+                ShouldStackFirstToLast="True"
+                VerticalOptions="Start">
+
+                <!--  1st Element  -->
+                <Frame
+                    BorderColor="LightGray"
+                    CornerRadius="45"
+                    HeightRequest="50"
+                    WidthRequest="50">
+                    <Frame.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0.1" Color="#4DA0B0" />
+                            <GradientStop Offset="1" Color="#D39D38" />
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                    <Frame.Content>
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="Label"
+                            VerticalOptions="Center" />
+                    </Frame.Content>
+
+                </Frame>
+
+                <!--  2nd Element  -->
+                <Frame
+                    BorderColor="LightGray"
+                    CornerRadius="45"
+                    HeightRequest="50"
+                    WidthRequest="50">
+                    <Frame.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0.1" Color="#6441A5" />
+                            <GradientStop Offset="1" Color="#2a0845" />
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                    <Frame.Content>
+                        <Path
+                            Aspect="Fill"
+                            Data="M 10,100 L 200,100 100,50Z"
+                            HorizontalOptions="Start"
+                            StrokeThickness="5">
+                            <Path.Stroke>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Offset="0.1" Color="#8e9eab" />
+                                    <GradientStop Offset="1" Color="#eef2f3" />
+                                </LinearGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+
+                    </Frame.Content>
+
+                </Frame>
+
+                <Frame
+                    BorderColor="LightGray"
+                    CornerRadius="45"
+                    HeightRequest="50"
+                    WidthRequest="50">
+                    <Frame.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0.1" Color="#ffb347" />
+                            <GradientStop Offset="1" Color="#ffcc33" />
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                    <Frame.Content>
+                        <Path Stroke="Green" StrokeThickness="2">
+                            <Path.Fill>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Offset="0.1" Color="#43cea2" />
+                                    <GradientStop Offset="1" Color="#185a9d" />
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                            <Path.Data>
+                                <GeometryGroup FillRule="Nonzero">
+                                    <EllipseGeometry
+                                        Center="10,0"
+                                        RadiusX="10"
+                                        RadiusY="10" />
+                                    <EllipseGeometry
+                                        Center="30,5"
+                                        RadiusX="10"
+                                        RadiusY="10" />
+                                    <EllipseGeometry
+                                        Center="1,15"
+                                        RadiusX="10"
+                                        RadiusY="10" />
+                                    <EllipseGeometry
+                                        Center="20,28"
+                                        RadiusX="10"
+                                        RadiusY="10" />
+                                    <EllipseGeometry
+                                        Center="30,38"
+                                        RadiusX="10"
+                                        RadiusY="10" />
+                                </GeometryGroup>
+
+                            </Path.Data>
+                        </Path>
+                    </Frame.Content>
+                </Frame>
+                <Frame
+                    BorderColor="LightGray"
+                    HeightRequest="50"
+                    WidthRequest="50">
+                    <Frame.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0.1" Color="#FFA17F" />
+                            <GradientStop Offset="1" Color="#00223E" />
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                    <Frame.Content>
+                        <Button Text="Button" TextColor="Cornsilk" />
+                    </Frame.Content>
+                </Frame>
+                <Frame
+                    BorderColor="LightGray"
+                    CornerRadius="45"
+                    HeightRequest="50"
+                    WidthRequest="50">
+                    <Frame.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Offset="0.1" Color="#73C8A9" />
+                            <GradientStop Offset="1" Color="#373B44" />
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                    <Frame.Content>
+                        <Image Source="monkey" />
+                    </Frame.Content>
+                </Frame>
+            </local:CircularLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

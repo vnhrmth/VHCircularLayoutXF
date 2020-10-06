@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="VHCircularLayoutXF.AngleChangerPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:VHCircularLayoutXF">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Offset="0.1" Color="#f46b45" />
+                    <GradientStop Offset="0.9" Color="#eea849" />
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Label
+                Padding="50"
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalOptions="CenterAndExpand"
+                Text="Bindable Angle" />
+            <Label FontFamily="Full Sans" HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="Current Radius: " />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="Title"
+                                Text="{Binding Source={x:Reference testLayout}, Path=Radius, StringFormat='{0:F2}'}" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label FontFamily="Full Sans" HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="Current Angle: " />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="Title"
+                                Text="{Binding Source={x:Reference AngleSlider}, Path=Value, StringFormat='{0:F2}'}" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Slider
+                x:Name="AngleSlider"
+                Margin="0,100,0,0"
+                HorizontalOptions="FillAndExpand"
+                Maximum="36"
+                Minimum="0"
+                Value="0" />
+            <local:CircularLayout
+                x:Name="testLayout"
+                Padding="160,160"
+                Angle="{Binding Value}"
+                BindingContext="{x:Reference AngleSlider}"
+                HorizontalOptions="Center"
+                InitialStartPositionAngle="-180"
+                Radius="150"
+                ShouldRotateChild="False"
+                ShouldStackFirstToLast="True"
+                VerticalOptions="Start">
+                <BindableLayout.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String />
+                        <x:String />
+                        <x:String />
+                        <x:String />
+                        <x:String />
+                        <x:String />
+                        <x:String />
+                        <x:String />
+                        <x:String />
+                        <x:String />
+                    </x:Array>
+                </BindableLayout.ItemsSource>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            BackgroundColor="Beige"
+                            BorderColor="LightGray"
+                            CornerRadius="40"
+                            HeightRequest="40"
+                            WidthRequest="40">
+                            <Frame.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Offset="0.1" Color="#2c3e50" />
+                                    <GradientStop Offset="1" Color="#3498db" />
+                                </LinearGradientBrush>
+                            </Frame.Background>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </local:CircularLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

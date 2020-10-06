@@ -113,6 +113,54 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\monkey.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\NewMoon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Quarter.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\FullMoon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\WaxingGibbous.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\WaxingCrescent.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\NewMoon.imageset\newmoon%401x.png" />
+    <ImageAsset Include="Assets.xcassets\NewMoon.imageset\newmoon%402x.png" />
+    <ImageAsset Include="Assets.xcassets\NewMoon.imageset\newmoon%403x.png" />
+    <ImageAsset Include="Assets.xcassets\WanningCrescent.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\WanningCrescent.imageset\wannincrescent%401x.png" />
+    <ImageAsset Include="Assets.xcassets\WanningCrescent.imageset\wannincrescent%402x.png" />
+    <ImageAsset Include="Assets.xcassets\WanningCrescent.imageset\wannincrescent%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Quarter.imageset\lastquarter%401x.png" />
+    <ImageAsset Include="Assets.xcassets\Quarter.imageset\lastquarter%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Quarter.imageset\lastquarter%403x.png" />
+    <ImageAsset Include="Assets.xcassets\FullMoon.imageset\fullmoon%401x.png" />
+    <ImageAsset Include="Assets.xcassets\FullMoon.imageset\fullmoon%402x.png" />
+    <ImageAsset Include="Assets.xcassets\FullMoon.imageset\fullmoon%403x.png" />
+    <ImageAsset Include="Assets.xcassets\WaxingGibbous.imageset\waxinggibbous%401x.png" />
+    <ImageAsset Include="Assets.xcassets\WaxingGibbous.imageset\waxinggibbous%402x.png" />
+    <ImageAsset Include="Assets.xcassets\WaxingGibbous.imageset\waxinggibbous%403x.png" />
+    <ImageAsset Include="Assets.xcassets\WaxingCrescent.imageset\waxingcrescent%401x.png" />
+    <ImageAsset Include="Assets.xcassets\WaxingCrescent.imageset\waxingcrescent%402x.png" />
+    <ImageAsset Include="Assets.xcassets\WaxingCrescent.imageset\waxingcrescent%403x.png" />
+    <ImageAsset Include="Assets.xcassets\WanningGibbous.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\WanningGibbous.imageset\wanninggibbous%401x.png" />
+    <ImageAsset Include="Assets.xcassets\WanningGibbous.imageset\wanninggibbous%402x.png" />
+    <ImageAsset Include="Assets.xcassets\WanningGibbous.imageset\wanninggibbous%403x.png" />
+    <ImageAsset Include="Assets.xcassets\monkey.imageset\monkey%401x.png" />
+    <ImageAsset Include="Assets.xcassets\monkey.imageset\monkey%402x.png" />
+    <ImageAsset Include="Assets.xcassets\monkey.imageset\monkey%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AceOfDiamonds.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AceOfSpades.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\TenOfSpades.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\TwoOfSpades.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AceOfDiamonds.imageset\AceOfDiamonds%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AceOfDiamonds.imageset\AceOfDiamonds%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AceOfDiamonds.imageset\AceOfDiamonds%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AceOfSpades.imageset\AceOfSpades%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AceOfSpades.imageset\AceOfSpades%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AceOfSpades.imageset\AceOfSpades%403x.png" />
+    <ImageAsset Include="Assets.xcassets\TenOfSpades.imageset\TenOfSpades%401x.png" />
+    <ImageAsset Include="Assets.xcassets\TenOfSpades.imageset\TenOfSpades%402x.png" />
+    <ImageAsset Include="Assets.xcassets\TenOfSpades.imageset\TenOfSpades%403x.png" />
+    <ImageAsset Include="Assets.xcassets\TwoOfSpades.imageset\TwoOfSpades%401x.png" />
+    <ImageAsset Include="Assets.xcassets\TwoOfSpades.imageset\TwoOfSpades%402x.png" />
+    <ImageAsset Include="Assets.xcassets\TwoOfSpades.imageset\TwoOfSpades%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -132,5 +180,20 @@
       <Project>{7408CCFE-EAEC-42F6-9243-C782CA9F9418}</Project>
       <Name>VHCircularLayoutXF</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\monkey.imageset\" />
+    <Folder Include="Assets.xcassets\NewMoon.imageset\" />
+    <Folder Include="Assets.xcassets\Quarter.imageset\" />
+    <Folder Include="Assets.xcassets\FullMoon.imageset\" />
+    <Folder Include="Assets.xcassets\WaxingGibbous.imageset\" />
+    <Folder Include="Assets.xcassets\WaxingCrescent.imageset\" />
+    <Folder Include="Assets.xcassets\WanningCrescent.imageset\" />
+    <Folder Include="Assets.xcassets\WanningGibbous.imageset\" />
+    <Folder Include="Assets.xcassets\NightSky.imageset\" />
+    <Folder Include="Assets.xcassets\AceOfDiamonds.imageset\" />
+    <Folder Include="Assets.xcassets\AceOfSpades.imageset\" />
+    <Folder Include="Assets.xcassets\TenOfSpades.imageset\" />
+    <Folder Include="Assets.xcassets\TwoOfSpades.imageset\" />
   </ItemGroup>
 </Project>

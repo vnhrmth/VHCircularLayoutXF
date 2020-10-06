@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="VHCircularLayoutXF.ViewCreatorPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:VHCircularLayoutXF">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Offset="0.1" Color="#de6262" />
+                    <GradientStop Offset="1" Color="#ffb88c" />
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Label
+                Padding="50"
+                FontSize="Title"
+                HorizontalOptions="CenterAndExpand"
+                Text="Add/Remove Child Views" />
+            <Stepper
+                x:Name="stepper"
+                Margin="100"
+                HorizontalOptions="Center"
+                Maximum="10"
+                Minimum="0"
+                ValueChanged="stepper_ValueChanged"
+                Value="0" />
+            <local:CircularLayout
+                x:Name="testLayout"
+                Padding="170,200"
+                HeightRequest="100"
+                InitialStartPositionAngle="-180"
+                Radius="160"
+                ShouldRotateChild="False"
+                ShouldStackFirstToLast="True"
+                VerticalOptions="Start"
+                WidthRequest="50" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

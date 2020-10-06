@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="VHCircularLayoutXF.FlowerPromoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:VHCircularLayoutXF">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Offset="0.1" Color="#1CD8D2" />
+                    <GradientStop Offset="0.9" Color="#93EDC7" />
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Label
+                Padding="50"
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalOptions="CenterAndExpand"
+                Text="Flower"
+                TextColor="White" />
+
+            <Button Clicked="Button_Clicked" Text="Animate" />
+
+
+            <AbsoluteLayout HorizontalOptions="Center">
+                <local:CircularLayout
+                    x:Name="OuterCircularLayout"
+                    Padding="120,148"
+                    Angle="0"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    IsVisible="False"
+                    Radius="100"
+                    VerticalOptions="Start"
+                    WidthRequest="50">
+
+                    <BindableLayout.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>N</x:String>
+                            <x:String>S</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+
+                        </x:Array>
+                    </BindableLayout.ItemsSource>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Padding="1,1,1,1"
+                                BorderColor="Azure"
+                                CornerRadius="20"
+                                HasShadow="True"
+                                HeightRequest="40"
+                                WidthRequest="40">
+                                <Button
+                                    BackgroundColor="LightGreen"
+                                    CommandParameter="{Binding .}"
+                                    CornerRadius="20"
+                                    HeightRequest="40"
+                                    WidthRequest="40" />
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+
+
+                </local:CircularLayout>
+                <local:CircularLayout
+                    x:Name="MidCircularLayout"
+                    Padding="122,154"
+                    Angle="0"
+                    HeightRequest="105"
+                    HorizontalOptions="Center"
+                    IsVisible="False"
+                    Radius="50"
+                    Scale="1.2"
+                    ShouldRotateChild="{Binding IsToggled}"
+                    VerticalOptions="Start"
+                    WidthRequest="55">
+
+                    <BindableLayout.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>N</x:String>
+                            <x:String>S</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                        </x:Array>
+                    </BindableLayout.ItemsSource>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Padding="1,1,1,1"
+                                BorderColor="Azure"
+                                CornerRadius="20"
+                                HasShadow="True"
+                                HeightRequest="40"
+                                WidthRequest="40">
+                                <Button
+                                    BackgroundColor="Orange"
+                                    CommandParameter="{Binding .}"
+                                    CornerRadius="20"
+                                    HeightRequest="40"
+                                    WidthRequest="40" />
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+
+
+                </local:CircularLayout>
+                <local:CircularLayout
+                    x:Name="InnerCircularLayout"
+                    Padding="120,150"
+                    Angle="0"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    IsVisible="False"
+                    Radius="25"
+                    Scale="1.2"
+                    ShouldStackFirstToLast="False"
+                    VerticalOptions="Start"
+                    WidthRequest="50">
+
+                    <BindableLayout.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>N</x:String>
+                            <x:String>S</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                            <x:String>R</x:String>
+                        </x:Array>
+                    </BindableLayout.ItemsSource>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Padding="1,1,1,1"
+                                BorderColor="Azure"
+                                CornerRadius="20"
+                                HasShadow="True"
+                                HeightRequest="40"
+                                WidthRequest="40">
+                                <Button
+                                    BackgroundColor="Yellow"
+                                    CommandParameter="{Binding .}"
+                                    CornerRadius="20"
+                                    HeightRequest="40"
+                                    WidthRequest="40" />
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+
+
+                </local:CircularLayout>
+            </AbsoluteLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

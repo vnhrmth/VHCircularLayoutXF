@@ -3,27 +3,122 @@
     x:Class="VHCircularLayoutXF.MyPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:VHCircularLayoutXF">
+    xmlns:local="clr-namespace:VHCircularLayoutXF"
+    BackgroundColor="Beige">
     <ContentPage.Content>
+
         <StackLayout Padding="40,40">
-            <Switch x:Name="switch" />
+            <!--<Switch x:Name="switch" />-->
             <Button Clicked="Button_Clicked_2" Text="Click me" />
             <Slider
                 x:Name="slider"
-                Maximum="150"
+                Maximum="360"
+                Minimum="0"
+                Value="0" />
+
+            <Slider
+                x:Name="moonslider"
+                Maximum="45"
                 Minimum="0"
                 Value="0" />
             <local:CircularLayout
                 x:Name="testLayout"
-                Padding="120,150"
-                BackgroundColor="Beige"
+                Padding="100,150"
+                Angle="{Binding Value}"
+                BindingContext="{x:Reference moonslider}"
                 HeightRequest="100"
                 HorizontalOptions="Center"
+                InitialStartPositionAngle="-180"
+                Radius="150"
                 ShouldRotateChild="False"
                 ShouldStackFirstToLast="True"
                 VerticalOptions="Start"
                 WidthRequest="50">
+                <local:CircularLayout.GestureRecognizers>
+                    <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated" />
+                </local:CircularLayout.GestureRecognizers>
 
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="20"
+                    HorizontalOptions="Center"
+                    Source="NewMoon"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="20"
+                    HorizontalOptions="Center"
+                    Source="WanningCrescent"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="20"
+                    HorizontalOptions="Center"
+                    Source="Quarter"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="20"
+                    HorizontalOptions="Center"
+                    Source="WanningGibbous"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="20"
+                    HorizontalOptions="Center"
+                    Source="FullMoon"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="20"
+                    HorizontalOptions="Center"
+                    Source="WaxingGibbous"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="20"
+                    HorizontalOptions="Center"
+                    Source="Quarter"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="20"
+                    HorizontalOptions="Center"
+                    Source="WaxingCrescent"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
+
+                <!--<Frame
+                    Background="{x:Static Brush.Indigo}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="X"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Background="{x:Static Brush.Indigo}"
+                    BorderColor="LightGray"
+                    CornerRadius="40"
+                    HasShadow="True"
+                    HeightRequest="40"
+                    WidthRequest="40">
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="X"
+                        VerticalOptions="Center" />
+                </Frame>
                 <Frame
                     Background="{x:Static Brush.Indigo}"
                     BorderColor="LightGray"
@@ -108,7 +203,7 @@
                         HorizontalOptions="Center"
                         Text="N"
                         VerticalOptions="Center" />
-                </Frame>
+                </Frame>-->
             </local:CircularLayout>
 
         </StackLayout>
