@@ -11,8 +11,8 @@ Watch the Video
 | Radius  | 100.0  |  Allows you to change radius based on your layout. |
 | Angle  | 30.0  |  Allows you to alter the angle between each element, if you need to overlap elements set a lower angle and lower radius |
 | ShouldRotateChild  |  false | Each child is rotated as per their position in the layout.Rotated based on the anchorpoint.  |
-|  InitialStartPositionAngle | -180.0 Or 0  | We can use this property to alter the start position of the elements in the circular layout. This property enables you to rotate the elements in circular way.Follows clockwise by default, we can change to anticlockwise by interpolating from negative to positive values.|
-|  ShouldStackFirstToLast | true  |  We can stack it top to bottom or bottom. Particularly useful when we want overlapping objects, where we can stack elements in the form of stack or reversed stack. |
+|  InitialStartPositionAngle | -180.0 Or 0  | Use this property to alter the start position of the elements in the circular layout. This property enables you to rotate the elements in circular way.Follows clockwise by default, we can change to anticlockwise by interpolating from negative to positive values.|
+|  ShouldStackFirstToLast | true  |  stack it top to bottom or bottom to top. Particularly useful when we want overlapping objects. |
 
 # How to use?
 Nuget ---> coming soon!!
