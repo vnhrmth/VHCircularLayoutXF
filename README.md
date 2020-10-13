@@ -1,5 +1,7 @@
 # Circular Layout Xamarin Forms
 
+Watch the Video
+
 [![Watch the video](https://i.imgur.com/FmClglm.png)](https://youtu.be/hRpGkBN2I0w)
 
 # Bindable properties
