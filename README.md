@@ -17,7 +17,7 @@ Watch the Video
 # How to use?
 Nuget ---> coming soon!!
 
-Meanwhile you can just use copy/paste CircularLayout Class in your project. 
+Meanwhile you can just directly replicate CircularLayout Class in your project. 
 That class will do everything for you. :)
 
 # Usage:
